@@ -16,7 +16,7 @@ public class DatabaseService : IDatabaseService
     {
         var sql = "SELECT HotelID, HotelName, City, Country FROM dbo.Hotel";
         using var conn = new SqlConnection(
-            connectionString: Environment.GetEnvironmentVariable("SQLAZURECONNSTR_ContosoSuites")!
+            connectionString: Environment.GetEnvironmentVariable("ContosoSuites")!
         );
         conn.Open();
         using var cmd = new SqlCommand(sql, conn);
