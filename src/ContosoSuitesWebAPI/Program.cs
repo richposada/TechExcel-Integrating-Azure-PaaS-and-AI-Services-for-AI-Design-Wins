@@ -8,6 +8,7 @@ using Microsoft.Data.SqlClient;
 using Azure.AI.OpenAI;
 using Azure;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,10 @@ app.UseHttpsRedirection();
 // This endpoint serves as the default landing page for the API.
 app.MapGet("/", async () => 
 {
+    foreach (DictionaryEntry env in Environment.GetEnvironmentVariables())
+    {
+        Console.WriteLine("{0}: {1}", env.Key, env.Value);
+    }
     return "Welcome to the Contoso Suites Web API!";
 })
     .WithName("Index")
